@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="../css/prueba.css">
+  
+    <title>Ip Explorer-Simulador</title>
+  
+
+</head>
+<body>
+    <div id="control-panel">
+        <h2>Panel de Control</h2>
+        <div class="device" draggable="true" id="computer">
+            <img src="../images/computadora.png" alt="computadora">
+        </div>
+        <div class="device" draggable="true" id="server">
+            <img src="../images/server.png" alt="servidor">
+        </div>
+        <div class="device" draggable="true" id="router">
+            <img src="../images/router.png" alt="router">
+        </div>
+        <div class="device" draggable="true" id="cable">
+            <img src="../images/cable.png" alt="cable">
+        </div>
+    </div>
+    
+    <div id="workspace">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="cont">
+        <button id="play">Iniciar Simulación</button>
+        <button id="stop">Detener Simulación</button>
+        <a href="../index.html">
+            <button>Regresar al Home</button>
+        </a>
+    </div>
+
+    <div id="config-dialog">
+        <h3>Configuración del Router</h3>
+        <label for="router-name">Nombre:</label>
+        <input type="text" id="router-name">
+        <label for="router-ip">IP:</label>
+        <input type="text" id="router-ip">
+        <label for="router-mask">Máscara:</label>
+        <input type="text" id="router-mask" value="255.255.255.0">
+        <button id="save-config">Guardar</button>
+    </div>
+
+
+</body>
+<script src="../js/prueba.js"></script>
+</html>

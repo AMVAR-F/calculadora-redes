@@ -434,11 +434,19 @@ a:focus {
 @media  screen and (max-width:900px) {
   .container-acordion{
     max-width: 90%;
+
   }
   
 }
 
+
 /* feature section */
+.feature_section_1{
+  background: #4822d1;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+}
 
 .feature_section {
   text-align: center;
@@ -458,11 +466,20 @@ a:focus {
   height: 200px;
   border-radius: 10px;
 }
-
+.feature_img-container1 {
+  background-color: #1ba1b900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border-radius: 10px;
+}
 .feature_img-box {
   width: 200px;
 }
-
+.feature_img-box1{
+  width: 200px;
+}
 .feature_card {
   width: 300px;
   padding: 0 15px;
@@ -509,3 +526,57 @@ a:focus {
 }
 
 /* end footer section*/
+/*calculadora*/
+.container-table{
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 60px;
+  font-family: "Poppins", sans-serif;
+  
+}
+
+.container-table input{
+  border-color: #4113e5f1;
+  
+}
+.close-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff4d4d;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  position:absolute;
+  translate: 200px -40px;
+  
+  
+}
+
+.close-btn:hover {
+  background-color: #e60000;
+  transform: scale(1.1);
+}
+
+.close-btn::before,
+.close-btn::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.close-btn::before {
+  transform: rotate(45deg);
+}
+
+.close-btn::after {
+  transform: rotate(-45deg);
+}

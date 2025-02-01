@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Calculadora VLSM - IP Explorer</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins|Raleway:400,600|Righteous&display=swap"
+    rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="../css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../css/responsive.css" rel="stylesheet" />
+</head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="../index.html">
+            <span>
+              Ip Explorer
+            </span>
+          </a>
+
+          <div class="navbar-collapse" id="">
+            <div class="d-none d-lg-flex ml-auto flex-column flex-lg-row align-items-center mt-3">
+              <form class="form-inline mb-3 mb-lg-0 ">
+
+              </form>
+
+              </ul>
+            </div>
+
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1"> </span>
+                <span class="s-2"> </span>
+                <span class="s-3"> </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="../index.html">Home</a>
+                <a href="calculadora.html">Calculadora</a>
+                <a href="./html/contact.html">Material Audiovisual</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div class="container">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="slider_item-box">
+                <div class="slider_item-container">
+                  <div class="slider_item-detail">
+                    <h1>Bienvenido a IP Explorer</h1>
+
+                    <p>
+                      Sumérgete en el emocionante mundo de las redes, precisión (tal vez) y aprendizaje interactivo en
+                      un solo lugar.
+                    </p>
+
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="slider_item-box">
+                <div class="slider_item-container">
+                  <div class="slider_item-detail">
+                    <h1>
+                      Explora y Calcula con IP Explorer
+                    </h1>
+                    <p>
+                      Domina tus redes con Ip Explorer. Precisión en cálculos IP, simulaciones interactivas y
+                      aprendizaje fácil. ¡Empieza hoy y mejora tus habilidades en redes!
+                    </p>
+
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="sr-only">Next</span>
+      </a>
+    </section>
+    <!-- end slider section -->
+  </div>
+  <h2 class="text-center">Calculadora de Subredes VLSM</h2>
+  <p class="text-center">Esta calculadora le permite subdividir una red utilizando la técnica VLSM (Máscara de Subred de Longitud Variable); introduce una dirección IPv4, el prefijo de red y los hosts requeridos:</p>
+
+  <div class="container-table">
+  
+    <form id="vlsmForm">
+      <div class="form-group">
+        <label>Dirección de red (Ej: 192.168.0.1/24):</label>
+        <input type="text" id="network" class="form-control" placeholder="Ingrese la IP base con su máscara" required>
+      </div>
+
+      <div class="form-group">
+        <label>Hosts requeridos:</label>
+        <div id="hostList">
+          <div class="host-item">
+            <input type="number" class="form-control w-25  host-value" placeholder="Hosts" min="1">
+            <button type="button" class="close-btn" onclick="removeHost(this)">✖</button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary mt-2" onclick="addHost()">Agregar Host</button>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block mt-3">Calcular</button>
+    </form>
+
+    <h3 class="text-center mt-4">Resultados</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Subred</th>
+            <th>Dirección de Red</th>
+            <th>Máscara</th>
+            <th>Rango de Hosts</th>
+            <th>Broadcast</th>
+          </tr>
+        </thead>
+        <tbody id="results"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Agregar Bootstrap JS y dependencias -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function addHost() {
+      let hostList = document.getElementById("hostList");
+      let div = document.createElement("div");
+      div.className = "host-item";
+      div.innerHTML = `<input type="number" class="form-control w-25 host-value" placeholder="Hosts" min="1">
+                       <button type="button" class="close-btn" onclick="removeHost(this)">✖</button>`;
+      hostList.appendChild(div);
+    }
+
+    function removeHost(btn) {
+      let hostList = document.getElementById("hostList");
+      if (hostList.children.length > 1) {
+        btn.parentElement.remove();
+      }
+    }
+
+    document.getElementById("vlsmForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      calcularVLSM();
+    });
+
+    function calcularVLSM() {
+      let network = document.getElementById("network").value.trim();
+      let hostInputs = document.querySelectorAll(".host-value");
+
+      // Validar formato de IPv4 y prefijo
+      let ipRegex = /^([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})\/(\d{1,2})$/;
+      let match = network.match(ipRegex);
+      if (!match) {
+        alert("Formato de dirección de red inválido. Ejemplo válido: 192.168.0.1/24");
+        return;
+      }
+
+      let ipBase = match[1].split(".").map(x => parseInt(x, 10));
+      let prefixInt = parseInt(match[2]);
+
+      // Validar prefijo
+      if (prefixInt < 0 || prefixInt > 32) {
+        alert("El prefijo debe estar entre /0 y /32.");
+        return;
+      }
+
+      // Validar IP dentro de rango
+      if (ipBase.some(octet => isNaN(octet) || octet < 0 || octet > 255)) {
+        alert("La dirección ingresada no es válida.");
+        return;
+      }
+
+      // Obtener valores de hosts y validar
+      let hosts = [];
+      hostInputs.forEach(input => {
+        let val = parseInt(input.value);
+        if (!isNaN(val) && val > 0) {
+          hosts.push(val);
+        } else {
+          alert("El valor del host debe ser un número válido mayor a 0.");
+          return;
+        }
+      });
+
+      if (hosts.length === 0) {
+        alert("Debe agregar al menos un valor de host válido.");
+        return;
+      }
+
+      // Calcular direcciones disponibles
+      let availableIP = Math.pow(2, 32 - prefixInt);
+      let totalRequired = hosts.reduce((acc, h) => acc + Math.pow(2, Math.ceil(Math.log2(h + 2))), 0);
+
+      if (totalRequired > availableIP) {
+        alert("Los hosts solicitados exceden la cantidad de direcciones disponibles.");
+        return;
+      }
+
+      // Ordenar subredes de mayor a menor número de hosts
+      hosts.sort((a, b) => b - a);
+
+      let currentIP = [...ipBase];
+      let tbody = document.getElementById("results");
+      tbody.innerHTML = "";
+
+      hosts.forEach((host, index) => {
+        let neededIPs = Math.pow(2, Math.ceil(Math.log2(host + 2)));
+        let newPrefix = 32 - Math.log2(neededIPs);
+
+        let networkAddress = currentIP.join(".");
+        let broadcastAddress = [...currentIP];
+        broadcastAddress[3] += neededIPs - 1;
+
+        let firstHost = [...currentIP];
+        firstHost[3] += 1;
+        let lastHost = [...broadcastAddress];
+        lastHost[3] -= 1;
+
+        let row = `<tr>
+          <td>Subred ${index + 1}</td>
+          <td>${networkAddress}/${newPrefix}</td>
+          <td>${subnetMask(newPrefix)}</td>
+          <td>${firstHost.join(".")} - ${lastHost.join(".")}</td>
+          <td>${broadcastAddress.join(".")}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+
+        currentIP[3] += neededIPs;
+      });
+    }
+
+    function subnetMask(prefix) {
+      let mask = [];
+      for (let i = 0; i < 4; i++) {
+        if (prefix >= 8) {
+          mask.push(255);
+        } else {
+          mask.push(Math.pow(2, prefix % 8) - 1);
+          prefix = 0;
+        }
+        prefix -= 8;
+      }
+      return mask.join(".");
+    }
+  </script>
+</body>
+<script>
+  function openNav() {
+    document.getElementById("myNav").classList.toggle("menu_width");
+    document
+      .querySelector(".custom_menu-btn")
+      .classList.toggle("menu_btn-style");
+  }
+</script>
+
+</html>
